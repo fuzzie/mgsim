@@ -1,4 +1,4 @@
-#include "Processor.h"
+#include <arch/proc/Processor.h>
 #include <arch/FPU.h>
 #include <arch/symtable.h>
 #include <programs/mgsim.h>

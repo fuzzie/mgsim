@@ -1,4 +1,4 @@
-#include "Processor.h"
+#include <arch/proc/Processor.h>
 #include <arch/symtable.h>
 #include <cassert>
 #include <sstream>

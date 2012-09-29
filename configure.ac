@@ -221,6 +221,8 @@ AC_ARG_VAR([LD_MIPS], [Location of the `ld' utility configured for the MIPS bina
 AC_ARG_VAR([AS_MIPSEL], [Location of the `as' utility configured for the MIPSel binary format.])
 AC_ARG_VAR([LD_MIPSEL], [Location of the `ld' utility configured for the MIPSel binary format.])
 
+isa_impl=$target_cpu
+
 case "$target_cpu" in
 mtalpha)
 
@@ -272,6 +274,8 @@ mips)
   ;;
 
 mipsel)
+
+  isa_impl=mips
 
   AC_PATH_PROG([AS_MIPSEL], [mipsel-linux-gnu-as], [no], [$prefix/bin$PATH_SEPARATOR$PATH])
   AC_PATH_PROG([LD_MIPSEL], [mipsel-linux-gnu-ld], [no], [$prefix/bin$PATH_SEPARATOR$PATH])
@@ -330,6 +334,8 @@ else
 fi
 
 AM_CONDITIONAL([ENABLE_C_TESTS], [test x$enable_compiled_tests = xyes])
+
+AC_CONFIG_LINKS([arch/proc/ISA.cpp:arch/proc/ISA.$isa_impl.cpp])
 
 AC_CONFIG_FILES([
 	Makefile
